@@ -7,17 +7,7 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "types": [
-      "void/env"
-    ]
+    "types": ["void/env", "vite/client"]
   },
-  "include": [
-    "src",
-    "shared",
-    "server",
-    "routes",
-    "test",
-    "vite.config.ts",
-    "void.config.ts"
-  ]
+  "include": ["src", "shared", "server", "routes", "test", "vite.config.ts", "void.config.ts", "env.ts"]
 }

@@ -187,8 +187,8 @@ export function parseCertificateMessage(body: Uint8Array): ExtractResult {
  * 不信任任何長度欄位，所有讀取都有邊界檢查，不會拋出例外。
  */
 export class CertificateExtractor {
-  private buf = new Uint8Array(0);
-  private hs = new Uint8Array(0);
+  private buf: Uint8Array = new Uint8Array(0);
+  private hs: Uint8Array = new Uint8Array(0);
   private received = 0;
   private serverVersion: number | null = null;
   private result: ExtractResult | null = null;
