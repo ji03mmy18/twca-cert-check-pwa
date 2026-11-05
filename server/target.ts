@@ -99,7 +99,7 @@ export function parseIPv6(s: string): number[] | null {
   const total = head.length + rest.length + tail.length;
   if (dbl.length === 2) {
     if (total > 7) return null;
-    return [...head, ...new Array(8 - total).fill(0), ...rest, ...tail];
+    return [...head, ...Array.from({ length: 8 - total }, () => 0), ...rest, ...tail];
   }
   if (total !== 8) return null;
   return [...head, ...tail];

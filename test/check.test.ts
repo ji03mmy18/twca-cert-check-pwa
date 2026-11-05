@@ -65,7 +65,7 @@ function certMsg(certs: Uint8Array[]): Uint8Array {
   for (const c of certs) parts.push(c.length >> 16, (c.length >> 8) & 0xff, c.length & 0xff, ...c);
   return hs(11, Uint8Array.from([parts.length >> 16, (parts.length >> 8) & 0xff, parts.length & 0xff, ...parts]));
 }
-const serverHello = hs(2, Uint8Array.from([3, 3, ...new Array(32).fill(1), 0, 0xc0, 0x2f, 0]));
+const serverHello = hs(2, Uint8Array.from([3, 3, ...Array.from({ length: 32 }, () => 1), 0, 0xc0, 0x2f, 0]));
 
 describe("runCheck", () => {
   it("returns evaluation for a TLS 1.2 server and closes the socket", async () => {

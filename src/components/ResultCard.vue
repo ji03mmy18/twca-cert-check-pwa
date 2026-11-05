@@ -14,7 +14,9 @@ const LABELS: Record<CardData["status"], string> = {
 };
 const LEVEL_LABELS = { affected: "受影響", warning: "警告", info: "資訊" } as const;
 
-const label = computed(() => LABELS[props.card.status]);
+const label = computed(() =>
+  props.card.waitSeconds ? `查詢次數已達上限，${props.card.waitSeconds} 秒後自動繼續…` : LABELS[props.card.status],
+);
 const showPasteHint = computed(() =>
   ["TLS13_ONLY", "TLS_ALERT", "CONNECT_FAILED", "NO_CERTIFICATE"].includes(props.card.error?.code ?? ""),
 );

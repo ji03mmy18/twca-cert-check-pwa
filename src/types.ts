@@ -8,4 +8,6 @@ export interface CardData {
   status: CardStatus;
   result?: EvaluationResult;
   error?: ApiError;
+  /** 因速率限制等待中，剩餘秒數 */
+  waitSeconds?: number;
 }
