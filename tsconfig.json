@@ -13,11 +13,11 @@
   },
   "include": [
     "src",
-    "pages",
+    "shared",
+    "server",
     "routes",
-    "middleware",
-    "crons",
-    "queues",
-    "db"
+    "test",
+    "vite.config.ts",
+    "void.config.ts"
   ]
 }
