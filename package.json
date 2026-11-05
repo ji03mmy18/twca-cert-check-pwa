@@ -8,7 +8,9 @@
     "preview": "vp preview",
     "test": "vp test run",
     "gen:certs": "bash scripts/gen-test-certs.sh",
-    "typecheck": "vue-tsc --noEmit"
+    "typecheck": "vue-tsc --noEmit",
+    "test:integration": "bash scripts/integration-test.sh",
+    "deploy": "void deploy"
   },
   "dependencies": {
     "hono": "^4.11.9",
