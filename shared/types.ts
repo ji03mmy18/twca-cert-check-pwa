@@ -45,6 +45,7 @@ export type ApiErrorCode =
   | "TIMEOUT"
   | "TLS13_ONLY"
   | "TLS_ALERT"
+  | "UNSUPPORTED_VERSION"
   | "PARSE_ERROR"
   | "NO_CERTIFICATE"
   | "METHOD_NOT_ALLOWED"
