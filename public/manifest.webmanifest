@@ -1,0 +1,19 @@
+{
+  "name": "TWCA 憑證檢查",
+  "short_name": "TWCA 檢查",
+  "description": "檢查網站是否仍使用受影響的 TWCA 中繼憑證（Bugzilla 2087236）",
+  "lang": "zh-TW",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#f6f7f9",
+  "theme_color": "#1d4ed8",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

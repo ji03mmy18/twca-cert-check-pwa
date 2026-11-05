@@ -9,5 +9,5 @@
     "skipLibCheck": true,
     "types": ["void/env", "vite/client"]
   },
-  "include": ["src", "shared", "server", "routes", "test", "vite.config.ts", "void.config.ts", "env.ts"]
+  "include": ["src", "shared", "server", "routes", "test", "vite.config.ts", "void.config.ts", "env.ts", "build"]
 }

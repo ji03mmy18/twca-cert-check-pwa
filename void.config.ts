@@ -12,6 +12,8 @@ export default defineConfig({
   routing: {
     headers: {
       "/api/*": ["Cache-Control: no-store"],
+      "/sw.js": ["Cache-Control: no-cache"],
+      "/manifest.webmanifest": ["Cache-Control: no-cache"],
       "/*": ["X-Content-Type-Options: nosniff", "Referrer-Policy: strict-origin-when-cross-origin"],
     },
   },
