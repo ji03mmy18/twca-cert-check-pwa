@@ -40,7 +40,7 @@ describe("parseCertificate", () => {
   it("throws DerError on random corruption", () => {
     const der = fixtureDer("ca.crt");
     let seed = 42;
-    const rnd = () => ((seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff);
+    const rnd = () => (seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
     for (let i = 0; i < 2000; i++) {
       const copy = der.slice();
       for (let k = 0; k < 3; k++) copy[Math.floor(rnd() * copy.length)] = Math.floor(rnd() * 256);

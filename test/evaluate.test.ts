@@ -82,6 +82,8 @@ describe("evaluate (paste mode)", () => {
     const r = await evaluate([root, ca, leafOld], { mode: "paste" });
     expect(r.chain[0].subject).toBe("CN=localhost");
     expect(r.chain.map((c) => c.role)).toEqual(["leaf", "intermediate", "intermediate"]);
+    expect(r.chain[1].subject).toContain("Test TWCA SSL Certification Authority");
+    expect(r.chain[2].subject).toContain("Test TWCA Root");
     expect(codes(r)).toContain("ORDER_ADJUSTED");
     expect(codes(r)).toContain("LEAF_BEFORE_REISSUE");
   });
@@ -90,6 +92,11 @@ describe("evaluate (paste mode)", () => {
     const r = await evaluate([ca, leafNoBc], { mode: "paste" });
     expect(r.chain[0].subject).toBe("CN=localhost");
     expect(r.verdict).toBe("ok");
+  });
+
+  it("does not report reordering for a correctly ordered chain", async () => {
+    const r = await evaluate([leafOld, ca, root], { mode: "paste" });
+    expect(codes(r)).not.toContain("ORDER_ADJUSTED");
   });
 
   it("only leaf pasted", async () => {

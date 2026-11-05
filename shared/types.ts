@@ -9,7 +9,8 @@ export type FindingCode =
   | "NO_LEAF"
   | "ORDER_ADJUSTED"
   | "ORDER_UNCERTAIN"
-  | "LOOKS_UPDATED";
+  | "LOOKS_UPDATED"
+  | "INPUT_SKIPPED";
 
 export interface Finding {
   level: FindingLevel;
@@ -54,6 +55,4 @@ export interface ApiError {
   message: string;
 }
 
-export type CheckResponse =
-  | ({ ok: true; target: string } & EvaluationResult)
-  | { ok: false; error: ApiError };
+export type CheckResponse = ({ ok: true; target: string } & EvaluationResult) | { ok: false; error: ApiError };

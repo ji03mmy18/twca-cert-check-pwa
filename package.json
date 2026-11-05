@@ -7,7 +7,8 @@
     "build": "vp build",
     "preview": "vp preview",
     "test": "vp test run",
-    "gen:certs": "bash scripts/gen-test-certs.sh"
+    "gen:certs": "bash scripts/gen-test-certs.sh",
+    "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
     "hono": "^4.11.9",
@@ -18,7 +19,8 @@
     "typescript": "^5.9.0",
     "vite": "npm:@voidzero-dev/vite-plus-core@^1.4.0",
     "vite-plus": "^1.4.0",
-    "void": "1.6.2"
+    "void": "1.6.2",
+    "vue-tsc": "^3.3.14"
   },
   "overrides": {
     "vite": "npm:@voidzero-dev/vite-plus-core@^1.4.0"

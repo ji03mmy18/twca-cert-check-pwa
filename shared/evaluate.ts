@@ -35,20 +35,38 @@ interface Ordered {
   findings: Finding[];
 }
 
+/** 從網站憑證開始，依 issuer → subject 串出憑證鏈；串不上的依原順序放在最後。 */
+function sortByIssuer(leaf: ParsedCertificate, cas: ParsedCertificate[]): ParsedCertificate[] {
+  const rest = [...cas];
+  const out: ParsedCertificate[] = [];
+  let issuer = leaf.issuer;
+  for (;;) {
+    const idx = rest.findIndex((c) => c.subject === issuer);
+    if (idx < 0) break;
+    const [next] = rest.splice(idx, 1);
+    out.push(next);
+    if (next.subject === next.issuer) break; // 自簽根憑證
+    issuer = next.issuer;
+  }
+  return [...out, ...rest];
+}
+
 function orderForPaste(certs: ParsedCertificate[]): Ordered {
   const nonCA = certs.filter((c) => c.isCA !== true);
   const ca = certs.filter((c) => c.isCA === true);
   if (nonCA.length === 1) {
     const leaf = nonCA[0];
     const findings: Finding[] = [];
-    if (certs[0] !== leaf) {
+    const intermediates = sortByIssuer(leaf, ca);
+    const reordered = [leaf, ...intermediates].some((c, i) => certs[i] !== c);
+    if (reordered) {
       findings.push({
         level: "info",
         code: "ORDER_ADJUSTED",
         message: "已依 basicConstraints 自動辨識網站憑證，並調整憑證順序",
       });
     }
-    return { leaf, intermediates: ca, findings };
+    return { leaf, intermediates, findings };
   }
   if (nonCA.length === 0) {
     return {
