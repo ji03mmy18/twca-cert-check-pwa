@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "source": {
+    "name": "twca-cert-check",
+    "routes": [
+      {
+        "pattern": "twca-check.yomin.info",
+        "custom_domain": true
+      }
+    ],
+    "workers_dev": false,
+    "preview_urls": false,
+    "ratelimits": [
+      {
+        "name": "RATE_LIMITER",
+        "namespace_id": "20872361",
+        "simple": {
+          "limit": 10,
+          "period": 60
+        }
+      }
+    ]
+  },
+  "resolved": {
+    "name": "twca-cert-check",
+    "ratelimits": [
+      {
+        "name": "RATE_LIMITER",
+        "namespace_id": "20872361",
+        "simple": {
+          "limit": 10,
+          "period": 60
+        }
+      }
+    ],
+    "account_id": "2de005e621b257d51adce256623a6eac",
+    "compatibility_date": "2026-02-24",
+    "routes": [
+      {
+        "pattern": "twca-check.yomin.info",
+        "custom_domain": true
+      }
+    ],
+    "workers_dev": false,
+    "preview_urls": false
+  },
+  "text": "// void:published-traffic:v1:eyJ3b3JrZXJzX2RldiI6ZmFsc2UsInByZXZpZXdfdXJscyI6ZmFsc2UsInJvdXRlcyI6W3sicGF0dGVybiI6InR3Y2EtY2hlY2sueW9taW4uaW5mbyIsImN1c3RvbV9kb21haW4iOnRydWV9XX0\n{\n  \"name\": \"twca-cert-check\",\n  \"ratelimits\": [\n    {\n      \"name\": \"RATE_LIMITER\",\n      \"namespace_id\": \"20872361\",\n      \"simple\": {\n        \"limit\": 10,\n        \"period\": 60\n      }\n    }\n  ],\n  \"account_id\": \"2de005e621b257d51adce256623a6eac\",\n  \"compatibility_date\": \"2026-02-24\",\n  \"routes\": [\n    {\n      \"pattern\": \"twca-check.yomin.info\",\n      \"custom_domain\": true\n    }\n  ],\n  \"workers_dev\": false,\n  \"preview_urls\": false\n}\n"
+}
