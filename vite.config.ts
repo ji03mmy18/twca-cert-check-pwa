@@ -13,7 +13,7 @@ export default defineConfig({
   fmt: {
     printWidth: 120,
     quoteProps: "consistent",
-    ignorePatterns: ["BRIEF.md", "test/fixtures/**", "build/sw-template.js"],
+    ignorePatterns: ["docs/BRIEF.md", "test/fixtures/**", "build/sw-template.js"],
   },
   test: {
     include: ["test/**/*.test.ts"],

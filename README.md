@@ -29,6 +29,7 @@ server/check.ts        /api/check 核心流程
 routes/api/check.ts    Void 路由：速率限制、request 處理
 build/sw-plugin.ts     產生 Service Worker（預快取 app shell）
 src/                   Vue 前端
+docs/BRIEF.md          原始開發規格（事件背景、判斷邏輯、TLS 與防濫用設計）
 ```
 
 ### 為什麼自己做 TLS 握手
@@ -134,9 +135,9 @@ TWCA 預計 2026-11-12 在 Bugzilla 更新完整事件報告，清單可能增�
 - 查詢的網域不會寫進 log。
 - 只比對已公開的受影響清單，不驗證憑證簽章或信任鏈。
 
-## 與原始規格（BRIEF.md）不同之處
+## 與原始規格（[docs/BRIEF.md](docs/BRIEF.md)）不同之處
 
 - **X.509 解析**：沒有使用 `@peculiar/x509`，改寫一個只處理所需欄位的 DER 解析器（`shared/der.ts`、`shared/x509.ts`），支援 UTCTime 與 GeneralizedTime。這樣可以減少依賴與打包大小，也不用處理 polyfill 在 Workers 上的相容性。
 - **Service Worker**：`vite-plugin-pwa` 2.0 雖然支援 Vite 8，但在 Void 的多環境建置中，它在 `closeBundle` 寫出的 `sw.js` 不會出現在部署目錄。所以改用 `build/sw-plugin.ts`，在 client 環境的 `generateBundle` 把 `sw.js` 當成一般 asset 輸出。
 - **額外的錯誤代碼**：`UNSUPPORTED_VERSION`（TLS 1.0/1.1，規格要求視為錯誤，但用 `TLS13_ONLY` 描述不正確）、`METHOD_NOT_ALLOWED`、`INTERNAL_ERROR`。
-- **`check_twca.sh` 不在此 repo 中**，判斷邏輯依 BRIEF.md §3 實作。部署後請用實際網站與該腳本對照。
+- **`check_twca.sh` 不在此 repo 中**，判斷邏輯依 [docs/BRIEF.md](docs/BRIEF.md) §3 實作。部署後請用實際網站與該腳本對照。
